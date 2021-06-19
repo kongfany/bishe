@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="230dp"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/sc_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingRight="50dp"
+                android:text="啬园"
+                android:textColor="#222222"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/sc_like"
+                android:layout_width="19dp"
+                android:layout_height="19dp"
+                android:src="@mipmap/dianzan" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/header"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginLeft="9dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/locate" />
+
+            <TextView
+                android:id="@+id/sc_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="崇川区狼山镇街道"
+                android:textColor="#777777"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/sc_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="景区"
+                android:textColor="#777777"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="9dp">
+
+            <ImageView
+                android:id="@+id/sc_pic"
+                android:layout_width="108dp"
+                android:layout_height="64dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/news_pic" />
+            <TextView
+                android:id="@+id/sc_introduce"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="啬园建于1924年，为全国重点文物保护单位、“江苏省环境教育基地”、“南通市爱国主义教育基地”。清末状元、近代民族工业的先驱、实业家、教育家张謇先生（1853-1926）长眠于此。这里环境雅静、景色宜人。园内古木参天，有珙桐、台湾杉等珍稀树种200多种，总数万余株，为江苏南通规模最大的植物观赏园，是空气质量最好、负离子含量最高的生态园林，素有“城市氧吧”之称。"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="#f1f1f1" />
+
+
+</RelativeLayout>

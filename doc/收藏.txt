@@ -1,0 +1,6 @@
+{"code":"0","msg":"成功","data":[{"id":1,"eventid":9},{"id":4,"eventid":4}]}
+
+{"code":"0","msg":"成功","data":{"id":9,"collectnum":11,"commentnum":11,"flagcollect":1,"flaglike":1,"introduce":"哈哈哈","likenum":11,"name":"哈哈","sponsor":"哈哈哈","time":"哈哈","typeid":1}}
+
+
+[{"code":"0","msg":"成功","data":{"id":9,"collectnum":11,"commentnum":11,"flagcollect":1,"flaglike":1,"introduce":"哈哈哈","likenum":11,"name":"哈哈","sponsor":"哈哈哈","time":"哈哈","typeid":1}}]

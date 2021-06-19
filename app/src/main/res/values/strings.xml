@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">校园导游</string>
+    <string name="login">登录</string>
+    <string name="register">注册</string>
+    <string name="account_hint">请输入用户名</string>
+    <string name="pwd_hint">请输入密码</string>
+
+    <string-array name="data">
+        <item>校内景点</item>
+        <item>周边景点</item>
+    </string-array>
+    <string name="spin_title">切换景点</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

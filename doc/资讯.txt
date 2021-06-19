@@ -1,0 +1,58 @@
+//注：
+HomeActivty中的布局修改了第一个首页该了
+ //mFragments.add(HomeFragment.newInstance());
+ mFragments.add(NewsFragment.newInstance());
+
+
+1、创建NewsFragment
+简化：
+public class NewsFragment extends Fragment {
+
+    public NewsFragment() {
+
+    }
+
+
+    public static NewsFragment newInstance() {
+        NewsFragment fragment = new NewsFragment();
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_news, container, false);
+    }
+}
+继承Basefragment方法
+public class NewsFragment extends BaseFragment {
+
+    public NewsFragment() {
+    }
+
+    public static NewsFragment newInstance() {
+        NewsFragment fragment = new NewsFragment();
+        return fragment;
+    }
+
+    @Override
+    protected int initLayout() {
+        return R.layout.fragment_news;
+    }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void initDate() {
+
+    }
+}

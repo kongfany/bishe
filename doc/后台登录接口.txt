@@ -1,0 +1,19 @@
+请求地址: Request URL: http://10.8.240.48:9999/user/login
+请求方法: post
+请求头: Content-Type: application/json;charset=UTF-8
+请求体实例：
+        {
+            password: "123456",
+            username: "tom"
+        }
+
+响应结果:
+{
+    "code":"0",
+    "msg":"成功",
+    "data":{"id":29,"username":"root","password":"123456","email":"1","tel":"1"}
+}
+
+获取信息
+
+最新思路吧：活动界面参考视频界面

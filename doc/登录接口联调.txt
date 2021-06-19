@@ -1,0 +1,116 @@
+后台部署：
+java -jar renren-fast.jar
+
+ApiConfig
+    public static final String BASE_URl = "http://10.8.xxx.xxx:8080/renren-fast";
+    public static final String LOGIN = "/app/login";
+    public static final String REGISTER = "/app/register";
+
+
+
+登录接口：
+
+gradle基于jvm的构建工具——构建项目和依赖库管理（jar）
+jar包下载——mvnrepository.com,搜索jar包okhttp，选一个使用量最大的。安卓选择gradle复制，拷贝到build.gradle中的dependence
+
+请求地址: /app/login
+请求方法: post
+请求头: Content-Type: application/json;charset=UTF-8
+请求体实例：
+        {
+            "mobile": "13612345678",
+            "password": "admin",
+        }
+响应结果:
+        {
+            "msg": "success",
+            "code": 0,      //code=0,登录成功
+            "expire": 604800,
+            "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTkyMDQ0MzEyLCJleHAiOjE1OTI2NDkxMTJ9.FpOxHrkpYSexqo91Uk8YiS1Nf1Plox4a4nYoFu6ArLcy28beZyoGJbf9fTJ3L-eUs2ku0zABoxjDuMAZ7qzNhw"
+        }
+1、配置权限访问网络AndroidManifest.xml
+2、http请求，sdk大于27的版本会安全限制，会检查只能是https，http请求不了  //BAAE_URL="http://192.168.31.32:8080/renren-fast";
+    创建一个xml目录，一个xml文件，禁用掉明文流量请求的检查
+    在AndroidManifest.xml中的application中引进xml文件   android:networkSecurityConfig="@xml/network_security_config"
+
+通过okhttp发送请求——基础课程
+
+//        //一个登陆的接口拿到了登陆的token
+//        //第一步创建OKHttpClient
+//        OkHttpClient client = new OkHttpClient.Builder()
+//                .build();
+//        Map m = new HashMap();    //通过map添加需要传送的数据
+//        m.put("mobile", account);
+//        m.put("password", pwd);
+//        JSONObject jsonObject = new JSONObject(m);    //通过jasonobject转成为jason字符串
+//        String jsonStr = jsonObject.toString();
+//        //创建请求体，设置请求体格式是application，将jason字符串传进来封装到请求体中
+//        RequestBody requestBodyJson =
+//                RequestBody.create(MediaType.parse("application/json;charset=utf-8")
+//                        , jsonStr);
+//        //第三步创建Rquest对象，url：要请求的链接地址（ApiConfig中），然后添加一个请求头，请求方法post，
+//        Request request = new Request.Builder()
+//                .url(ApiConfig.BASE_URl + "/login")
+//                .addHeader("contentType", "application/json;charset=UTF-8")
+//                .post(requestBodyJson)
+//                .build();
+//        //第四步创建call回调对象
+//        final Call call = client.newCall(request);
+//        //第五步发起请求
+//        call.enqueue(new Callback() {
+//            @Override
+//            public void onFailure(Call call, IOException e) { //请求失败的回调
+//                Log.e("onFailure", e.getMessage());
+//            }
+//
+//            @Override         //请求成功的回调，返回一个response对象得到body，转化成字符串
+//            public void onResponse(Call call, Response response) throws IOException {
+//                final String result = response.body().string();
+//                //ui的操作只能在主线程中，网络请求是异步的，是在子线程中进行的
+//                runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        showToast(result);//打印响应提示信息
+//                    }
+//                });
+//            }
+//        });
+
+
+本地存储登录接口响应回的token
+token:保存在应用的本地，请求其他接口的时候需要带着token，表示应用已经登陆过，以便来验证这个应用是已经登陆过的
+登录后返回的Jason串包括token
+通过gsonformat插件：
+把对应的key转换为实体的一个属性，自动的添加get，set方法。
+
+entity--loginresponse:res返回的是一个jason字符串，转化成实体类
+
+gson库把Jason串转化为loginresponse实体类
+                Gson gson =new Gson();
+                LoginResponse loginResponse=gson.fromJson(res,LoginResponse.class);//把Jason串转化为loginresponse实体类
+                if(loginResponse.getCode()==0){ //code=0请求成功，登录成功,
+
+                    String token=loginResponse.getToken();//得到token
+
+token保存在本地---SharedPreferences
+
+//                    SharedPreferences sp=getSharedPreferences("sp_ttit",MODE_PRIVATE);//xml文件的名称，模式私有的
+//                    SharedPreferences.Editor editor=sp.edit();
+//                    editor.putString("token:",token);
+//                    editor.commit();//token存放到sp_ttit.xml文件中
+                    saveStringToSp("token",token);
+
+                    showToastSyno("登陆成功");
+                }else {
+                    showToastSyno("登录失败");
+                }
+
+待看：14--列表功能(完成)
+先考虑实现地图定位
+15节：get方法联调以及取出token的方法。
+
+
+videoFragment：分页界面
+item：重复布局
+videoentity：接口返回的接口类
+videoadapter：适配器，展示数据
